@@ -1,0 +1,38 @@
+//===================================================
+//   Grid
+//=====================================================
+
+.grid {
+  @extend %clearfix;
+    &__item {
+        margin: em(20px);
+    }
+}
+
+//===================================================
+//  Genrating Grid
+//=====================================================
+
+@mixin grid-cols($size, $grid-columns) {
+	@for $i from 1 through $grid-columns {
+		.col-#{$size}-#{$i}-#{$grid-columns} {
+			width: percentage($i / $grid-columns);
+            float: left;
+		}
+	}
+}
+
+//===================================================
+//  Call Grid
+//=====================================================
+
+
+// Create Grid all viewport size
+
+@include mq(medium) {
+  @include grid-cols(md, 12);
+}
+
+@include mq(large) {
+  @include grid-cols(lg, 12);
+}
